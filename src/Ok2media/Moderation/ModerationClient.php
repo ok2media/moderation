@@ -84,7 +84,7 @@ class ModerationClient extends Client {
             case 'unpublish':
                 return array(
                     'cid'   => $content->cid,
-                    'published' => 1
+                    'published' => 0
                 );
             default:
                 throw new \Exception('There has been an error', 500);
