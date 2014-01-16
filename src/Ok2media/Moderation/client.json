@@ -87,6 +87,44 @@
                 }
             }
         },
+        "getMedia": {
+            "httpMethod": "GET",
+            "uri": "media.json/{cid}",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "cid": {
+                    "description": "The ID of the content the media is attached to",
+                    "type": "string",
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "submitMedia": {
+            "httpMethod": "POST",
+            "uri": "media.json",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "cid": {
+                    "description": "The ID of the content the media is attached to",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "mid": {
+                    "description": "The ID of the media file",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "file": {
+                    "description": "The location of the file you wish to attach",
+                    "location": "postFile",
+                    "send_as": "file",
+                    "required": true
+                }
+            }
+        },
         "getStatus": {
             "httpMethod": "GET",
             "uri": "status.json/{cid}",

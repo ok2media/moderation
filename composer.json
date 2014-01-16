@@ -11,12 +11,10 @@
             "homepage": "https://github.com/ok2media"
         }
     ],
-
     "require": {
         "php": ">=5.3.3",
         "guzzle/guzzle": "3.8.*"
     },
-
     "autoload": {
         "psr-0": {
             "Ok2media\\": "src/"
