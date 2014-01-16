@@ -37,10 +37,10 @@ class ModerationClient extends Client {
         $this->setDescription($description);
 
         $ModerationSignature = new ModerationSignature(
-            [
+            array(
                 'private_key'   => $config['private_key'],
                 'public_key'    => $config['public_key']
-            ]
+            )
         );
 
         $this->addSubscriber($ModerationSignature);
@@ -69,7 +69,7 @@ class ModerationClient extends Client {
             throw new \Exception('Variable Error', 500);
         }
         
-        if (!$this->xcheck(['xid'=>$content->xid])) {
+        if (!$this->xcheck(array('xid'=>$content->xid))) {
             throw new \Exception('Not Found', 404);
         }
 
@@ -77,15 +77,15 @@ class ModerationClient extends Client {
             case 'test':
                 exit(json_encode(array('success'=>true)));
             case 'publish':
-                return [
+                return array(
                     'cid'   => $content->cid,
                     'published' => 1
-                ];
+                );
             case 'unpublish':
-                return [
+                return array(
                     'cid'   => $content->cid,
                     'published' => 1
-                ];
+                );
             default:
                 throw new \Exception('There has been an error', 500);
         }

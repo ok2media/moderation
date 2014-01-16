@@ -17,7 +17,7 @@ class ModerationSignature implements EventSubscriberInterface
 {
 
     /** @var Collection Configuration settings */
-    protected $config = [];
+    protected $config = array();
 
     /**
      * @param	Array	$config		Configuration array containing these parameters:
