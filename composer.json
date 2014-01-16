@@ -1,0 +1,25 @@
+{
+    "name": "ok2media/moderation",
+    "type": "library",
+    "description": "PHP SDK for Ok2media Moderation service",
+    "homepage": "http://ok2media.com/",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "ok2media",
+            "email": "support@ok2media.com",
+            "homepage": "https://github.com/ok2media"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.3.3",
+        "guzzle/guzzle": "3.8.*"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "Ok2media\\": "src/"
+        }
+    }
+}

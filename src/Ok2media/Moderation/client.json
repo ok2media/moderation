@@ -1,0 +1,343 @@
+{
+    "name": "Moderation",
+    "apiVersion": "3.0",
+    "operations" : {
+        "testService" : {
+            "httpMethod": "GET",
+            "uri": "test.json",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response"
+        },
+        "xcheck": {
+            "httpMethod": "GET",
+            "uri": "xcheck.json/{xid}",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "xid": {
+                    "description": "The XID of the request to check",
+                    "type": "string",
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getServiceUsers": {
+            "httpMethod": "GET",
+            "uri": "serviceusers.json",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response"
+        },
+        "submitServiceUser": {
+            "httpMethod": "POST",
+            "uri": "serviceuser.json",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "username": {
+                    "description": "The username of the user",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "name": {
+                    "description": "The full name of the user",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "email": {
+                    "description": "The email address of the user",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "scopes": {
+                    "description": "The permission scopes that this user has",
+                    "type": "array",
+                    "location": "postField"
+                }
+            }
+        },
+        "updateServiceUser": {
+            "httpMethod": "PUT",
+            "uri": "serviceuser.json/{id}",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "id": {
+                    "description": "The ID of the service user",
+                    "type": "string",
+                    "location": "uri",
+                    "required": true
+                },
+                "username": {
+                    "description": "The username of the user",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "name": {
+                    "description": "The full name of the user",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "email": {
+                    "description": "The email address of the user",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "scopes": {
+                    "description": "The permission scopes that this user has",
+                    "type": "array",
+                    "location": "postField"
+                }
+            }
+        },
+        "getStatus": {
+            "httpMethod": "GET",
+            "uri": "status.json/{cid}",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "cid": {
+                    "description": "The ID of the content",
+                    "type": "string",
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "setStatus": {
+            "httpMethod": "PUT",
+            "uri": "status.json/{cid}",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "cid": {
+                    "description": "The ID of the content",
+                    "type": "string",
+                    "location": "uri",
+                    "required": true
+                },
+                "status": {
+                    "description": "The status to set this content to",
+                    "type": "integer",
+                    "location": "postField",
+                    "required": true
+                }
+            }
+        },
+        "getMultipleStatus": {
+            "httpMethod": "GET",
+            "uri": "status.json/checkmultiple",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "cid": {
+                    "description": "An CSV of content id's to check",
+                    "type": "string",
+                    "location": "query",
+                    "required": true
+                }
+            }
+        },
+        "getUpdatedSince": {
+            "httpMethod": "GET",
+            "uri": "status.json/updatedsince",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "since": {
+                    "description": "A timestamp to check from",
+                    "type": "integer",
+                    "location": "query",
+                    "required": true
+                }
+            }
+        },
+        "deleteContent": {
+            "httpMethod": "DELETE",
+            "uri": "content.json/{cid}",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "cid": {
+                    "description": "The ID of the content",
+                    "type": "string",
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "submitContent": {
+            "httpMethod": "POST",
+            "uri": "content.json",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "cid": {
+                    "description": "The ID of the content",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "text": {
+                    "description": "The text to moderate",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "from": {
+                    "description": "The user that created this content",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "to": {
+                    "description": "An array of the users that this content is addressed to",
+                    "type": "array",
+                    "location": "postField"
+                },
+                "tag": {
+                    "description": "The friendly name of the content-type e.g. comment or blog post",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "thread": {
+                    "description": "The thread this piece of content is a member of, used to group in the dashboard",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "pre": {
+                    "description": "Should this content be pre-moderated",
+                    "type": "integer",
+                    "default": 0,
+                    "location": "postField"
+                },
+                "display_strings": {
+                    "description": "An array of strings to display alongside the content",
+                    "type": "array",
+                    "location": "postField"
+                },
+                "scopes": {
+                    "description": "An array of permission scopes that apply to this content",
+                    "type": "array",
+                    "location": "postField"
+                }
+            }
+        },
+        "updateContent": {
+            "httpMethod": "PUT",
+            "uri": "content.json/{cid}",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "cid": {
+                    "description": "The ID of the content",
+                    "type": "string",
+                    "location": "uri",
+                    "required": true
+                },
+                "text": {
+                    "description": "The text to moderate",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "from": {
+                    "description": "The user that created this content",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "to": {
+                    "description": "An array of the users that this content is addressed to",
+                    "type": "array",
+                    "location": "postField"
+                },
+                "tag": {
+                    "description": "The friendly name of the content-type e.g. comment or blog post",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "thread": {
+                    "description": "The thread this piece of content is a member of, used to group in the dashboard",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "pre": {
+                    "description": "Should this content be pre-moderated",
+                    "type": "integer",
+                    "default": 0,
+                    "location": "postField"
+                },
+                "display_strings": {
+                    "description": "An array of strings to display alongside the content",
+                    "type": "array",
+                    "location": "postField"
+                },
+                "scopes": {
+                    "description": "An array of permission scopes that apply to this content",
+                    "type": "array",
+                    "location": "postField"
+                }
+            }
+        },
+        "getUser": {
+            "httpMethod": "GET",
+            "uri": "user.json/{uid}",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "uid": {
+                    "description": "The ID of the user",
+                    "type": "string",
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "submitUser": {
+            "httpMethod": "POST",
+            "uri": "user.json",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "uid": {
+                    "description": "The ID of the user",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "name": {
+                    "description": "The full name of the user",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "dob": {
+                    "description": "The date of birth of the user, DD-MM-YYYY",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "gender": {
+                    "description": "The gender of the user, either M or F",
+                    "type": "string",
+                    "location": "postField"
+                }
+            }
+        },
+        "updateUser": {
+            "httpMethod": "PUT",
+            "uri": "user.json/{uid}",
+            "responseClass": "Ok2media\\Moderation\\Response\\Response",
+            "parameters": {
+                "uid": {
+                    "description": "The ID of the user",
+                    "type": "string",
+                    "location": "uri",
+                    "required": true
+                },
+                "name": {
+                    "description": "The full name of the user",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "dob": {
+                    "description": "The date of birth of the user, DD-MM-YYYY",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "gender": {
+                    "description": "The gender of the user, either M or F",
+                    "type": "string",
+                    "location": "postField"
+                }
+            }
+        }
+    }
+}
