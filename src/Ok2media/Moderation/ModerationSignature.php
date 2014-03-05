@@ -75,7 +75,7 @@ class ModerationSignature implements EventSubscriberInterface
      */
     public function signature($verb, $url, $time, $private) {
         $string_data =  strtoupper($verb) . "\n" .
-                        strtolower($url) . "\n" .
+                        $url . "\n" .
                         $time;
         return hash_hmac('sha256', $string_data, $private);
     }
