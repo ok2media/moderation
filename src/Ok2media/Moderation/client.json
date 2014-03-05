@@ -16,7 +16,9 @@
                     "description": "The XID of the request to check",
                     "type": "string",
                     "location": "uri",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 36
                 }
             }
         },
@@ -34,22 +36,29 @@
                     "description": "The username of the user",
                     "type": "string",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "name": {
                     "description": "The full name of the user",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "email": {
                     "description": "The email address of the user",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 6,
+                    "maxLength": 255
                 },
                 "scopes": {
                     "description": "The permission scopes that this user has",
                     "type": "array",
-                    "location": "postField"
+                    "location": "postField",
+                    "minItems": 1
                 }
             }
         },
@@ -62,28 +71,37 @@
                     "description": "The ID of the service user",
                     "type": "string",
                     "location": "uri",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "username": {
                     "description": "The username of the user",
                     "type": "string",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "name": {
                     "description": "The full name of the user",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "email": {
                     "description": "The email address of the user",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 6,
+                    "maxLength": 255
                 },
                 "scopes": {
                     "description": "The permission scopes that this user has",
                     "type": "array",
-                    "location": "postField"
+                    "location": "postField",
+                    "minItems": 1
                 }
             }
         },
@@ -96,7 +114,9 @@
                     "description": "The ID of the content the media is attached to",
                     "type": "string",
                     "location": "uri",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 }
             }
         },
@@ -109,13 +129,17 @@
                     "description": "The ID of the content the media is attached to",
                     "type": "string",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "mid": {
                     "description": "The ID of the media file",
                     "type": "string",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "file": {
                     "description": "The location of the file you wish to attach",
@@ -134,7 +158,9 @@
                     "description": "The ID of the content",
                     "type": "string",
                     "location": "uri",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 }
             }
         },
@@ -147,13 +173,17 @@
                     "description": "The ID of the content",
                     "type": "string",
                     "location": "uri",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "status": {
                     "description": "The status to set this content to",
                     "type": "integer",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minimum": 0,
+                    "maximum": 1
                 }
             }
         },
@@ -166,7 +196,8 @@
                     "description": "An CSV of content id's to check",
                     "type": "string",
                     "location": "query",
-                    "required": true
+                    "required": true,
+                    "minLength": 1
                 }
             }
         },
@@ -192,7 +223,9 @@
                     "description": "The ID of the content",
                     "type": "string",
                     "location": "uri",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 }
             }
         },
@@ -205,50 +238,64 @@
                     "description": "The ID of the content",
                     "type": "string",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "text": {
                     "description": "The text to moderate",
                     "type": "string",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minLength": 1
                 },
                 "from": {
                     "description": "The user that created this content",
                     "type": "string",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "to": {
                     "description": "An array of the users that this content is addressed to",
                     "type": "array",
-                    "location": "postField"
+                    "location": "postField",
+                    "minItems": 1
                 },
                 "tag": {
                     "description": "The friendly name of the content-type e.g. comment or blog post",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "thread": {
                     "description": "The thread this piece of content is a member of, used to group in the dashboard",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "pre": {
                     "description": "Should this content be pre-moderated",
                     "type": "integer",
                     "default": 0,
-                    "location": "postField"
+                    "location": "postField",
+                    "minimum": 0,
+                    "maximum": 1
                 },
                 "display_strings": {
                     "description": "An array of strings to display alongside the content",
                     "type": "array",
-                    "location": "postField"
+                    "location": "postField",
+                    "minItems": 1
                 },
                 "scopes": {
                     "description": "An array of permission scopes that apply to this content",
                     "type": "array",
-                    "location": "postField"
+                    "location": "postField",
+                    "minItems": 1
                 }
             }
         },
@@ -261,50 +308,65 @@
                     "description": "The ID of the content",
                     "type": "string",
                     "location": "uri",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "text": {
                     "description": "The text to moderate",
                     "type": "string",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "from": {
                     "description": "The user that created this content",
                     "type": "string",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "to": {
                     "description": "An array of the users that this content is addressed to",
                     "type": "array",
-                    "location": "postField"
+                    "location": "postField",
+                    "minItems": 1
                 },
                 "tag": {
                     "description": "The friendly name of the content-type e.g. comment or blog post",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "thread": {
                     "description": "The thread this piece of content is a member of, used to group in the dashboard",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "pre": {
                     "description": "Should this content be pre-moderated",
                     "type": "integer",
                     "default": 0,
-                    "location": "postField"
+                    "location": "postField",
+                    "minimum": 0,
+                    "maximum": 1
                 },
                 "display_strings": {
                     "description": "An array of strings to display alongside the content",
                     "type": "array",
-                    "location": "postField"
+                    "location": "postField",
+                    "minItems": 1
                 },
                 "scopes": {
                     "description": "An array of permission scopes that apply to this content",
                     "type": "array",
-                    "location": "postField"
+                    "location": "postField",
+                    "minItems": 1
                 }
             }
         },
@@ -317,7 +379,9 @@
                     "description": "The ID of the user",
                     "type": "string",
                     "location": "uri",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 }
             }
         },
@@ -330,22 +394,30 @@
                     "description": "The ID of the user",
                     "type": "string",
                     "location": "postField",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "name": {
                     "description": "The full name of the user",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "dob": {
                     "description": "The date of birth of the user, DD-MM-YYYY",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 10,
+                    "maxLength": 10
                 },
                 "gender": {
                     "description": "The gender of the user, either M or F",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 1,
+                    "maxLength": 1
                 }
             }
         },
@@ -358,22 +430,30 @@
                     "description": "The ID of the user",
                     "type": "string",
                     "location": "uri",
-                    "required": true
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "name": {
                     "description": "The full name of the user",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 1,
+                    "maxLength": 255
                 },
                 "dob": {
                     "description": "The date of birth of the user, DD-MM-YYYY",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 10,
+                    "maxLength": 10
                 },
                 "gender": {
                     "description": "The gender of the user, either M or F",
                     "type": "string",
-                    "location": "postField"
+                    "location": "postField",
+                    "minLength": 1,
+                    "maxLength": 1
                 }
             }
         }
